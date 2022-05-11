@@ -49,3 +49,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.field {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
