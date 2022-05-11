@@ -13,7 +13,7 @@ form.addEventListener("submit", function (event) {
     },
   };
 
-  fetch("https://asi2-backend-market.herokuapp.com/users", context)
+  fetch("http://localhost:8081/users", context)
     .then((response) => response.json())
     .then((data) => getData(data, users))
     .then(() => login(users, surname, password))

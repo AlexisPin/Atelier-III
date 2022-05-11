@@ -1,7 +1,7 @@
 const user = {};
 const id = window.localStorage.getItem("id");
 window.addEventListener("load", function () {
-  fetch(`https://asi2-backend-market.herokuapp.com/user/${id}`)
+  fetch(`http://127.0.0.1:8081/user/${id}`)
     .then((response) => response.json())
     .then((data) => getData(data));
 });
