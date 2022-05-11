@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../lib/Semantic-UI-CSS-master/semantic.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/test.css" />
+    <title>Play</title>
+  </head>
+  <body
+    style="
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    "
+  >
+    <div id="gridContainer">
+      <template id="navbar-content">
+        <div class="ui menu" style="margin-bottom: 20px; padding: 20px">
+          <div class="left menu">
+            <h3 style="margin-right: 5px" id="account">{{money}}</h3>
+            <span
+              style="margin-right: 10px; font-size: large; font-weight: bold"
+              >$</span
+            >
+            <i class="menu home icon large" id="homeButton"></i>
+          </div>
+          <div>
+            <h1>{{currentPage}}</h1>
+          </div>
+          <div class="right menu">
+            <h3><i class="user icon large"></i>{{login}}</h3>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <noscript>
+      <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+
+    <div id="username-page">
+      <div class="username-page-container">
+        <h1 class="title">Type your username</h1>
+        <form id="usernameForm" name="usernameForm">
+          <div class="form-group">
+            <input
+              type="text"
+              id="name"
+              placeholder="Username"
+              autocomplete="off"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="accent username-submit">
+              Start Chatting
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="chat-page" class="hidden">
+      <div class="chat-container">
+        <div class="chat-header">
+          <h2>JavaTechie Global Chat Box</h2>
+        </div>
+        <div class="connecting">Connecting...</div>
+        <ul id="messageArea"></ul>
+        <form id="messageForm" name="messageForm" nameForm="messageForm">
+          <div class="form-group">
+            <div class="input-group clearfix">
+              <input
+                type="text"
+                id="message"
+                placeholder="Type a message..."
+                autocomplete="off"
+                class="form-control"
+              />
+              <button type="submit" class="primary">Send</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="../../lib/jquery-3.3.1.min.js"></script>
+    <script src="../../lib/Semantic-UI-CSS-master/semantic.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/room.js"></script>
+  </body>
+</html>

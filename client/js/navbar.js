@@ -1,5 +1,7 @@
 const user = {};
 const id = window.localStorage.getItem("id");
+!id ? (window.location.href = "login.html") : null;
+
 window.addEventListener("load", function () {
   fetch(`http://127.0.0.1:8081/user/${id}`)
     .then((response) => response.json())
