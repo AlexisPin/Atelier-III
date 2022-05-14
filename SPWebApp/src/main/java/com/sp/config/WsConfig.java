@@ -15,14 +15,15 @@ public class WsConfig implements WebSocketMessageBrokerConfigurer {
 
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint("/room").setAllowedOrigins("*").withSockJS();
+		registry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
 	}
 	
 
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
-		registry.enableSimpleBroker("/game");
+		registry.enableSimpleBroker("/room","/player");
 		registry.setApplicationDestinationPrefixes("/app");
+		registry.setUserDestinationPrefix("/player");
 	}
 
 }
