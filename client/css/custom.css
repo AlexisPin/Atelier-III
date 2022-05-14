@@ -68,4 +68,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 20vw;
+}
+
+#room-container:hover {
+  cursor: pointer;
+  transform: translate(1px, -1px);
+  transition: transform 0.1s ease-in;
 }

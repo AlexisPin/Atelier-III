@@ -1,6 +1,6 @@
 const user = {};
 const id = window.localStorage.getItem("id");
-!id ? (window.location.href = "login.html") : null;
+!id ? (window.location.href = "pages/login.html") : null;
 
 window.addEventListener("load", function () {
   fetch(`http://127.0.0.1:8081/user/${id}`)
@@ -24,6 +24,8 @@ const getData = (data) => {
     currentPage = "PLAY";
   } else if (window.location.href.includes("index")) {
     currentPage = "HOME";
+  } else if (window.location.href.includes("room")) {
+    currentPage = "CREATE ROOM";
   }
   let template = document.querySelector("#navbar-content");
   let clone = document.importNode(template.content, true);

@@ -11,9 +11,7 @@
       href="../../lib/Semantic-UI-CSS-master/semantic.min.css"
     />
     <link rel="stylesheet" type="text/css" href="../css/custom.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    <title>Play</title>
+    <title>My cards</title>
   </head>
   <body>
     <div id="gridContainer">
@@ -28,7 +26,7 @@
             <i class="menu home icon large" id="homeButton"></i>
           </div>
           <div>
-            <h1>{{currentPage}}</h1>
+            <h1 id="title">{{currentPage}}</h1>
           </div>
           <div class="right menu">
             <h3><i class="user icon large"></i>{{login}}</h3>
@@ -39,7 +37,7 @@
 
     <div class="ui grid">
       <div class="ten wide column" style="margin: 3%">
-        <h2 class="ui ">Room List</h2>
+        <h3 class="ui center aligned header">My Card List</h3>
 
         <!------------------------------------------------------------------------->
         <!--    ----------------------------- List ----------------------------- -->
@@ -50,40 +48,47 @@
         >
           <thead>
             <tr>
-              <th class="three wide">Room</th>
-              <th class="four wide">User</th>
-              <th class="four wide">Bet</th>
-              <th class="one wide">GO</th>
+              <th class="three wide">Name</th>
+              <th class="three wide">Description</th>
+              <th>Family</th>
+              <th>Affinity</th>
+              <th>Energy</th>
+              <th>HP</th>
             </tr>
           </thead>
           <tbody id="tableContent">
             <template id="row">
               <tr class="row-card">
-                <td class="room">{{room}}</td>
-                <td class="user">{{user}}</td>
-                <td class="bet">{{bet}}</td>
-                <td>
-                  <div class="ui vertical animated button" tabindex="0" id="play-button">
-                    <div  id="{{room}}">
-                      <i class="cogs icon"></i>
-                    </div>
-                  </div>
+                <td class="imgUrl">
+                  <img class="ui avatar image" src="{{img_src}}" />
+                  <span>{{name}}</span>
                 </td>
+                <td class="description">{{description}}</td>
+                <td class="family">{{family_name}}</td>
+                <td class="affinity">{{affinity}}</td>
+                <td class="energy">{{energy}}</td>
+                <td class="hp">{{hp}}</td>
               </tr>
             </template>
           </tbody>
         </table>
       </div>
-      <a href="room.html" id="room-container">
-      <div class="foor wide column" >
-          <div id="create-room">
-            <h3 class="ui center aligned header">Create A Room</h3>
-          </div>
-        </div>
-      </a>
+      <div class="five wide column">
+        <!------------------------------------------------------------------------->
+        <!--    ----------------------------- CARD ----------------------------- -->
+        <!------------------------------------------------------------------------->
+        <div id="card"></div>
+      </div>
+    </div>
   </body>
   <script src="../../lib/jquery-3.3.1.min.js"></script>
   <script src="../../lib/Semantic-UI-CSS-master/semantic.js"></script>
+  <script src="../js/custom.js"></script>
   <script src="../js/navbar.js"></script>
-  <script src="../js/play.js"></script>
+  <script src="../js/sellCardList.js"></script>
+  <script>
+    $(function () {
+      $("#card").load("../part/card-full.html");
+    });
+  </script>
 </html>
