@@ -1,11 +1,13 @@
 package com.sp.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.aspectj.apache.bcel.util.SyntheticRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,25 +29,41 @@ public class UserService {
 	
 	@Autowired
 	CardRepository cRepository;
+	
 	public void addUser(User u) {
+		List<Card> cards = cRepository.findByUser(null);
+		
+		if(cards.size() > 4) {
+			Collections.shuffle(cards);
+			List<Card> userCards = new ArrayList<>();
+			for (int j = 0; j < 5; j++) {
+				Card card = cards.get(j);
+				userCards.add(card);
+				card.setUser(u);
+				
+			}
+			u.setCardList(userCards);
+		}
 		User createdUser=uRepository.save(u);
 		System.out.println(createdUser);
 	}
 	
-	public User getUser(int id) {
+	public ResponseEntity<?>  getUser(int id) {
 		Optional<User> uOpt =uRepository.findById(id);
 		if (uOpt.isPresent()) {
-			return uOpt.get();
+			return new ResponseEntity<>(new CustomSuccesType(uOpt.get()).getUser(),
+                    HttpStatus.OK);
 		}else {
-			return null;
+			return new ResponseEntity<>(new CustomErrorType("Unable to find user with id " + id + "."),
+                    HttpStatus.NOT_FOUND);
 		}
 	}
 
 	public ResponseEntity<?> updateUser(Integer userId, @Valid UpdateUserDto userRequest, @RequestParam String transaction) {
-		User currentUser = this.getUser(userId);
-
+		Optional<User> uOpt = uRepository.findById(userId);
+		User currentUser = uOpt.get();
 		if(currentUser == null) { 
-			return new ResponseEntity<Object>(new CustomErrorType("Unable to upate. User with id " + userId + " not found."),
+			return new ResponseEntity<>(new CustomErrorType("Unable to upate. User with id " + userId + " not found."),
                     HttpStatus.NOT_FOUND);
 		}
 		int userAccount = currentUser.getAccount();
@@ -53,7 +71,7 @@ public class UserService {
 		Optional<Card> currentCard = cRepository.findById(cardId);
 		
 		if(currentCard.isEmpty()) {
-			return new ResponseEntity<Object>(new CustomErrorType("Unable to upate. Card with id " + userRequest.getCard() + " not found."),
+			return new ResponseEntity<>(new CustomErrorType("Unable to upate. Card with id " + userRequest.getCard() + " not found."),
                     HttpStatus.NOT_FOUND);
 		}
 		
@@ -106,7 +124,7 @@ public class UserService {
 		uRepository.save(currentUser);
 		cRepository.save(currentCard.get());
 		
-		return new ResponseEntity<>(new CustomSuccesType(currentUser.getAccount()), HttpStatus.OK);
+		return new ResponseEntity<>(new CustomSuccesType(currentUser.getAccount()).getAccount(), HttpStatus.OK);
 	}
 
 	public Iterable<User> getUsers() {

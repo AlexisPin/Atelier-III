@@ -34,9 +34,9 @@ public class UserRestCrt {
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/user/{id}")
-    public User getUser(@PathVariable String id) {
-        User u=uService.getUser(Integer.valueOf(id));
-        return u;
+    public ResponseEntity<?>  getUser(@PathVariable String id) {
+         return uService.getUser(Integer.valueOf(id));
+        
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/users")
