@@ -138,9 +138,10 @@ const updateMoney = (data, id) => {
   data.errorMessage
     ? alert(data.errorMessage)
     : ((account = document.querySelector("#account")),
-      (account.innerHTML = data.account.toString()),
+      (account.innerHTML = data.toString()),
       alert("Vous venez d'acheter une carte !"));
-  if (data.account) {
+
+  if (!data.errorMessage) {
     let cardContainer = document.querySelector("#tableContent");
     var children = Array.from(cardContainer.children).splice(1);
     children.forEach((child) => {
