@@ -41,6 +41,7 @@ const joinRoom = (roomName) => {
       JSON.stringify(userInfos)
     );
   }
+  window.location.href = "/pages/game.html";
 };
 
 function onError(error) {

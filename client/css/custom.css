@@ -76,3 +76,14 @@ body {
   transform: translate(1px, -1px);
   transition: transform 0.1s ease-in;
 }
+
+#playButton {
+  background: antiquewhite;
+  width: 25vw;
+  height: 40vh;
+  margin-top: 42vh;
+  position: fixed;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
