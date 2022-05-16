@@ -1,6 +1,7 @@
 package com.sp.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -29,8 +30,9 @@ public class CardService {
 			return null;
 		}
 	}
-	public Iterable<Card> getCards(){
-		Iterable<Card> cOpt =cRepository.findByUser(null);
+	public List<Card> getCards(){
+		Iterable<Card> cOptIt = cRepository.findByUser(null);
+		List<Card> cOpt = (List<Card>) cOptIt;	
 		return cOpt; 
 	}
 }
