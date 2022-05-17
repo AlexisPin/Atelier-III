@@ -1,7 +1,6 @@
 const user = {};
 const id = window.localStorage.getItem("id");
-!id ? (window.location.href = "pages/login.html") : null;
-
+console.log(id);
 window.addEventListener("load", function () {
   fetch(`http://127.0.0.1:8081/user/${id}`)
     .then((response) => response.json())
@@ -10,8 +9,7 @@ window.addEventListener("load", function () {
 
 const getData = (data) => {
   const user = {
-    surName: data.surName,
-    lastName: data.lastName,
+    login: data.login,
     account: data.account,
   };
 
@@ -24,8 +22,6 @@ const getData = (data) => {
     currentPage = "PLAY";
   } else if (window.location.href.includes("index")) {
     currentPage = "HOME";
-  } else if (window.location.href.includes("room")) {
-    currentPage = "CREATE ROOM";
   }
   let template = document.querySelector("#navbar-content");
   let clone = document.importNode(template.content, true);
@@ -33,7 +29,7 @@ const getData = (data) => {
   newContent = clone.firstElementChild.innerHTML
     .replace(/{{money}}/g, user.account)
     .replace(/{{currentPage}}/g, currentPage)
-    .replace(/{{login}}/g, user.surName);
+    .replace(/{{login}}/g, user.login);
   clone.firstElementChild.innerHTML = newContent;
 
   let cardContainer = document.querySelector("#gridContainer");

@@ -5,46 +5,27 @@ const form = document.getElementById("form");
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  const users = [];
+  const user = {
+    login: surname.value,
+    pwd: password.value,
+  };
   const context = {
-    method: "GET",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(user),
   };
 
-  fetch("http://localhost:8081/users", context)
+  fetch("http://localhost:8081/login", context)
     .then((response) => response.json())
-    .then((data) => getData(data, users))
-    .then(() => login(users, surname, password))
+    .then((data) => login(data))
     .catch((error) => console.log(error));
 });
 
-const checkCredentials = (users, surname, password) => {
-  for (const user in users) {
-    if (users[user].login === surname && users[user].pwd === password) {
-      return true;
-    }
-  }
-  return false;
-};
-
-const getData = (data, users) => {
-  for (const user in data) {
-    users.push(data[user]);
-  }
-};
-
-const login = (users, surname, password) => {
-  for (const user in users) {
-    if (
-      users[user].surName === surname.value &&
-      users[user].pwd === password.value
-    ) {
-      window.location.href = "../index.html";
-      window.localStorage.setItem("id", users[user].id);
-      return;
-    }
-  }
-  alert("Wrong credentials!");
+const login = (data) => {
+  data.errorMessage
+    ? alert(data.errorMessage)
+    : (window.localStorage.setItem("id", data.id),
+      (window.location.href = "../index.html"));
 };

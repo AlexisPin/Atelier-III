@@ -87,7 +87,7 @@ const sellCard = (id) => {
     }),
   };
 
-  fetch(`http://127.0.0.1:8081/user/${userId}?transaction=sell`, context)
+  fetch(`http://127.0.0.1:8081/user/${userId}/sell`, context)
     .then((response) => response.json())
     .then((data) => updateMoney(data, id))
     .catch((error) => console.log(error));

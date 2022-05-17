@@ -52,7 +52,7 @@ const buyCard = (id) => {
     }),
   };
 
-  fetch(`http://localhost:8081/user/${userId}?transaction=buy`, context)
+  fetch(`http://localhost:8081/user/${userId}/buy`, context)
     .then((response) => response.json())
     .then((data) => updateMoney(data, id))
     .catch((error) => console.log(error));
