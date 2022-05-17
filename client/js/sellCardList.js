@@ -1,5 +1,3 @@
-let userCardsData = [];
-let userCardsId = [];
 let userCards = [];
 let userAccount = 0;
 const userId = window.localStorage.getItem("id");
@@ -16,37 +14,13 @@ const fetchUserInfos = () => {
     .then((data) => {
       userCards.push(...data.cardList), (userAccount = data.account);
     })
-    .then(() => fetchCardList(userCards))
+    .then(() => {
+      displayCards(userCards), addEvent();
+    })
     .catch((error) => console.log(error));
 };
 
 fetchUserInfos();
-
-const fetchCardList = async (userCards) => {
-  const context = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-  await userCards.forEach((card) => {
-    userCardsId.push(card.id);
-  });
-  userCardsId.forEach((id) => {
-    fetch(`http://127.0.0.1:8081/card/${id}`, context)
-      .then((response) => response.json())
-      .then((data) => userCardsData.push(data))
-      .then(() => isLoaded())
-      .catch((error) => console.log(error));
-  });
-};
-
-const isLoaded = () => {
-  if (userCardsData.length == userCardsId.length) {
-    displayCards(userCardsData);
-    addEvent();
-  }
-};
 
 const displayCards = (userCardsData) => {
   let template = document.querySelector("#row");
@@ -55,7 +29,6 @@ const displayCards = (userCardsData) => {
     let clone = document.importNode(template.content, true);
 
     newContent = clone.firstElementChild.innerHTML
-      //.replace(/{{family_src}}/g, card.imgUrl)
       .replace(/{{family_name}}/g, card.family)
       .replace(/{{affinity}}/g, card.affinity)
 
@@ -144,7 +117,6 @@ const displayCard = (card) => {
   let clone = document.importNode(template.content, true);
 
   newContent = clone.firstElementChild.innerHTML
-    //.replace(/{{family_src}}/g, card.imgUrl)
     .replace(/{{family_name}}/g, card.family)
     .replace(/{{img_src}}/g, card.imgUrl)
     .replace(/{{name}}/g, card.name)

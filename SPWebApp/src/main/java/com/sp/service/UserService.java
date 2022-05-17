@@ -1,7 +1,6 @@
 package com.sp.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.sp.model.Card;
 import com.sp.model.User;
+import com.sp.repository.CardRepository;
 import com.sp.repository.UserRepository;
 
 
@@ -21,6 +21,9 @@ public class UserService {
 	UserRepository uRepository;
 	
 	@Autowired
+	CardRepository cRepository;
+	
+	@Autowired
 	CardService cService;
 	
 	public void addUser(User u) {
@@ -28,7 +31,6 @@ public class UserService {
 		
 		List<Card> userCards = new ArrayList<>();
 		if(cards.size() > 4) {
-			Collections.shuffle(cards);
 			for (int j = 0; j < 5; j++) {
 				Card card = cards.get(j);
 				userCards.add(card);
@@ -37,6 +39,7 @@ public class UserService {
 			u.setCardList(userCards);
 		}
 		uRepository.save(u);
+		cRepository.saveAll(cards);
 	}
 	
 	public User getUser(int id) {

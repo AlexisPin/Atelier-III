@@ -11,6 +11,8 @@
       href="../../lib/Semantic-UI-CSS-master/semantic.min.css"
     />
     <link rel="stylesheet" type="text/css" href="../css/custom.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <title>My cards</title>
   </head>
   <body>
@@ -52,8 +54,10 @@
               <th class="three wide">Description</th>
               <th>Family</th>
               <th>Affinity</th>
-              <th>Energy</th>
               <th>HP</th>
+              <th>Energy</th>
+              <th>Defence</th>
+              <th>Attack</th>
             </tr>
           </thead>
           <tbody id="tableContent">
@@ -66,8 +70,10 @@
                 <td class="description">{{description}}</td>
                 <td class="family">{{family_name}}</td>
                 <td class="affinity">{{affinity}}</td>
-                <td class="energy">{{energy}}</td>
                 <td class="hp">{{hp}}</td>
+                <td class="energy">{{energy}}</td>
+                <td class="defence">{{defence}}</td>
+                <td class="attack">{{attack}}</td>
               </tr>
             </template>
           </tbody>
@@ -88,10 +94,10 @@
   <script src="../../lib/Semantic-UI-CSS-master/semantic.js"></script>
   <script src="../js/custom.js"></script>
   <script src="../js/navbar.js"></script>
-  <script src="../js/cardList.js"></script>
+  <script src="../js/play.js"></script>
   <script>
     $(function () {
-      $("#card").load("../part/card-full.html");
+      $("#card").load("../part/selected-card.html");
     });
   </script>
 </html>

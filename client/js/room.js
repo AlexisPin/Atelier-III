@@ -10,7 +10,7 @@ let stompClient = null;
 const onConnected = () => {
   room = {
     ...room,
-    user: userInfos[0].surName,
+    user: userInfos[0].login,
   };
   stompClient.subscribe("/room/public", onRoomReceived);
   stompClient.subscribe(`/room/${room.name}/private`, onPlayerReceived);
@@ -29,9 +29,7 @@ const onRoomReceived = (payload) => {
 };
 
 const onPlayerReceived = (payload) => {
-  console.log(payload);
   const data = JSON.parse(payload.body);
-  const player = data;
   window.location.href = "/pages/game.html";
 };
 
@@ -80,5 +78,4 @@ const fetchUserInfos = () => {
     .then((data) => userInfos.push(data))
     .catch((error) => console.log(error));
 };
-
 fetchUserInfos();

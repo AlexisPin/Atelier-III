@@ -79,11 +79,18 @@ body {
 
 #playButton {
   background: antiquewhite;
-  width: 25vw;
+  width: 19vw;
   height: 40vh;
   margin-top: 42vh;
   position: fixed;
   border-radius: 10px;
   display: grid;
   place-items: center;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#playButton:hover {
+  transform: translate(1px, -1px);
+  transition: transform 0.1s ease-in;
 }
