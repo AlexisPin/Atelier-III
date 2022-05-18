@@ -1,9 +1,6 @@
 package com.sp.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "card")
@@ -32,7 +29,7 @@ public class Card {
 	
 	public Card(Integer c_id, String name, String description, String family, String affinity, String imgUrl,
 			String smallImgUrl, Integer energy, Integer hp, Integer defence, Integer attack, Integer price,
-			Integer iduser) {
+			Integer idUser) {
 		super();
 		this.c_id = c_id;
 		this.name = name;

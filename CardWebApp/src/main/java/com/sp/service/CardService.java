@@ -1,13 +1,13 @@
 package com.sp.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,10 +35,11 @@ public class CardService {
 		}
 	}
 	public List<Card> getCards(){
-		Iterable<Card> cOptIt = cRepository.findByUser(null);
+		Iterable<Card> cOptIt = cRepository.findByidUser(null);
 		List<Card> cOpt = (List<Card>) cOptIt;	
 		return cOpt; 
 	}
+	
 	
 	public Card updateCard(@PathVariable Integer id,@Valid @RequestBody Integer idUser) {
 		Optional<Card> card = cRepository.findById(id);
@@ -51,6 +52,15 @@ public class CardService {
 			return null;
 		}
 		
+	}
+
+	public Iterable<Integer> getCardsId() {
+		List<Card> cOpt = getCards();
+		List<Integer> cardsId = new ArrayList<Integer>();
+		for (Card card : cOpt) {
+			cardsId.add(card.getId());
+		}
+		return cardsId;
 	}
 	
 }

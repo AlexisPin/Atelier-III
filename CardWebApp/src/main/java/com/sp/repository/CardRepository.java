@@ -9,6 +9,6 @@ public interface CardRepository extends CrudRepository<Card, Integer> {
 
 	public List<Card> findByName(String name);
 	
-	public List<Card> findByUser(Integer user);
+	public List<Card> findByidUser(Integer user);
 	
 }

@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
   import org.springframework.web.bind.annotation.RequestMethod;
   import org.springframework.web.bind.annotation.RestController;
 
-  import com.sp.model.Card;
+import com.sp.model.Card;
 import com.sp.service.CardService;
 
   @CrossOrigin
   @RestController
   public class CardRestCrt {
-      @Autowired
-      CardService cService;
+      
+	  @Autowired
+	  CardService cService;
       
       @RequestMapping(method=RequestMethod.POST,value="/card")
       public void addCard(@RequestBody Card card) {
@@ -34,7 +35,14 @@ import com.sp.service.CardService;
     	  Iterable<Card> cards = cService.getCards();
     	  return cards;
       }
+      
+      @RequestMapping(method=RequestMethod.GET,value="/cardsId")
+      public Iterable<Integer> getCardsId() {
+    	  Iterable<Integer> cardsId = cService.getCardsId();
+    	  return cardsId;
+      }
       	
+      
       @RequestMapping(method=RequestMethod.PUT,value="/card/{id}")
       public Card updateCard(@PathVariable Integer id,@Valid @RequestBody Integer idUser) {
     	  return cService.updateCard(id, idUser);
