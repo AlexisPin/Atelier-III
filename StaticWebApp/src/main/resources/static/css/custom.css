@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  background-color: #fff;
+}
+
+.cards .card {
+  height: 200px;
+  cursor: pointer;
+}
+.card .card-label {
+  font-size: 4rem;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  height: inherit;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.cards {
+  justify-content: center;
+}
+
+.container {
+  border: 2px solid teal;
+  border-radius: 10px;
+  margin: 10px;
+  width: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.button {
+  justify-content: center;
+}
+
+.button[type="submit"]:hover {
+  transform: translate(0px, -1px);
+  transition: transform 0.2s ease-in;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#room-container {
+  margin-top: 90px;
+  height: 60vh;
+  background-color: darkgray;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+}
+
+#room-container:hover {
+  cursor: pointer;
+  transform: translate(1px, -1px);
+  transition: transform 0.1s ease-in;
+}
+
+#playButton {
+  background: antiquewhite;
+  width: 19vw;
+  height: 40vh;
+  margin-top: 42vh;
+  position: fixed;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#playButton:hover {
+  transform: translate(1px, -1px);
+  transition: transform 0.1s ease-in;
+}
+
+#homeButton {
+  cursor: pointer;
+}
