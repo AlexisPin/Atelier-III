@@ -2,7 +2,7 @@ const surname = document.getElementById("surname");
 const password = document.getElementById("password");
 const lastname = document.getElementById("lastname");
 const confirmPassword = document.getElementById("confirmPassword");
-
+const login = document.getElementById("login");
 const form = document.getElementById("form");
 
 form.addEventListener("submit", function (event) {
@@ -11,7 +11,7 @@ form.addEventListener("submit", function (event) {
     surName: surname.value,
     lastName: lastname.value,
     pwd: password.value,
-    login: surname.value,
+    login: login.value,
     account: 1000,
   };
 

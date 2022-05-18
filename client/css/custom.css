@@ -12,6 +12,7 @@ body {
 
 .cards .card {
   height: 200px;
+  cursor: pointer;
 }
 .card .card-label {
   font-size: 4rem;
@@ -93,4 +94,8 @@ body {
 #playButton:hover {
   transform: translate(1px, -1px);
   transition: transform 0.1s ease-in;
+}
+
+#homeButton {
+  cursor: pointer;
 }
