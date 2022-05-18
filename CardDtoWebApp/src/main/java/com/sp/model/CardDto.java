@@ -1,13 +1,8 @@
 package com.sp.model;
 
-import javax.persistence.*;
 
-
-@Entity
-@Table(name = "card")
 public class CardDto {
-	@Id
-	@GeneratedValue
+
 	private Integer c_id;
 	private String name;
 	private String description;
@@ -20,7 +15,6 @@ public class CardDto {
 	private Integer defence;
 	private Integer attack;
 	private Integer price;
-	
 	private Integer idUser;
 	
 	
@@ -29,8 +23,7 @@ public class CardDto {
 	}
 	
 	public CardDto(Integer c_id, String name, String description, String family, String affinity, String imgUrl,
-			String smallImgUrl, Integer energy, Integer hp, Integer defence, Integer attack, Integer price,
-			Integer iduser) {
+			String smallImgUrl, Integer energy, Integer hp, Integer defence, Integer attack, Integer price, Integer idUser) {
 		super();
 		this.c_id = c_id;
 		this.name = name;

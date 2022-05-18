@@ -22,7 +22,8 @@ public class User {
 	private String lastName;
 	private String surName;
 	private String email;
-    private List<Integer> cardList = new ArrayList<>();
+	@ElementCollection
+    private List<Integer> cardList = new ArrayList<Integer>();
 	
 	public User() {
 	}
