@@ -1,6 +1,7 @@
 package com.sp.service;
 
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -19,11 +20,12 @@ public class UserService {
 	@Autowired
 	UserRepository uRepository;
 	
-	@Autowired
-	GetCard getCard;
+	GetCard getCard = new GetCard();
+	
 	
 	public void addUser(User u) {
-
+		List<Integer> cardsId = getCard.getCards();
+		
 		uRepository.save(u);
 	}
 	

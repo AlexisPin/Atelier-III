@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpAppCard {
+public class SpAppUser {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SpAppCard.class,args);
+		SpringApplication.run(SpAppUser.class,args);
 	}
 }

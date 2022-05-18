@@ -11,6 +11,12 @@ public class GetCard {
 
 	static final String URL_CARDSID = "http://localhost:8082/cardsId";
 
+
+
+    public GetCard() {
+
+    }
+    
 	public List<Integer> getCards() {
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -20,10 +26,6 @@ public class GetCard {
 		
 		List<Integer> cardsId = result.getBody();
 		return cardsId;
-	}
-	
-	public void updateCard(Integer cardId) {
-		
 	}
 	
 }
