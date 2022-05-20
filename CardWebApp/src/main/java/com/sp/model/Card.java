@@ -2,6 +2,8 @@ package com.sp.model;
 
 import javax.persistence.*;
 
+import org.springframework.lang.Nullable;
+
 @Entity
 @Table(name = "card")
 public class Card {
@@ -20,6 +22,7 @@ public class Card {
 	private Integer attack;
 	private Integer price;
 	
+	@Nullable
 	private Integer idUser;
 	
 	
@@ -146,7 +149,7 @@ public class Card {
 		return idUser;
 	}
 
-	public void setUser(Integer idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 

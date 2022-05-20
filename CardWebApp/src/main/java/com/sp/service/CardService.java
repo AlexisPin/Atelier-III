@@ -44,7 +44,11 @@ public class CardService {
 	public Card updateCard(@PathVariable Integer id,@Valid @RequestBody Integer idUser) {
 		Optional<Card> card = cRepository.findById(id);
 		if (card.isPresent()) {
-			card.get().setUser(idUser);
+			if(idUser == 0) {
+				card.get().setIdUser(null);
+			}else {
+				card.get().setIdUser(idUser);
+			}
 			cRepository.save(card.get());
 			return card.get();
 		}

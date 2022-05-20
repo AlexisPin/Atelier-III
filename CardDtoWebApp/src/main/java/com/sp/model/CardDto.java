@@ -140,7 +140,7 @@ public class CardDto {
 		return idUser;
 	}
 
-	public void setUser(Integer idUser) {
+	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
 
