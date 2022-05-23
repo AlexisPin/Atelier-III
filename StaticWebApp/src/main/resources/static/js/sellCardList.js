@@ -10,7 +10,7 @@ const fetchUserInfos = () => {
       "Content-Type": "application/json",
     },
   };
-  fetch(`http://127.0.0.1:8080/userid/${userId}`, context)
+  fetch(`http://127.0.0.1:8080/user/${userId}`, context)
     .then((response) => response.json())
     .then((data) => {
       fetchCardList(data.cardList), (userAccount = data.account);
