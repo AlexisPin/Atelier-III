@@ -1,14 +1,13 @@
   package com.sp.rest;
 
-  import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
-  import org.springframework.web.bind.annotation.RequestBody;
-  import org.springframework.web.bind.annotation.RequestMapping;
-  import org.springframework.web.bind.annotation.RequestMethod;
-  import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.sp.model.Card;
 import com.sp.service.CardService;
@@ -44,7 +43,7 @@ import com.sp.service.CardService;
       	
       
       @RequestMapping(method=RequestMethod.PUT,value="/card/{id}")
-      public Card updateCard(@PathVariable Integer id,@Valid @RequestBody Integer idUser) {
+      public Card updateCard(@PathVariable Integer id, @RequestBody Integer idUser) {
     	  return cService.updateCard(id, idUser);
       }
       

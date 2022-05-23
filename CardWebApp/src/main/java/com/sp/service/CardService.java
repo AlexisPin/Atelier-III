@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +39,7 @@ public class CardService {
 	}
 	
 	
-	public Card updateCard(@PathVariable Integer id,@Valid @RequestBody Integer idUser) {
+	public Card updateCard(@PathVariable Integer id,@RequestBody Integer idUser) {
 		Optional<Card> card = cRepository.findById(id);
 		if (card.isPresent()) {
 			if(idUser == 0) {

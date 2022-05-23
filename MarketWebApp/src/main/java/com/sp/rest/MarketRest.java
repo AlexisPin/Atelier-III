@@ -1,6 +1,5 @@
 package com.sp.rest;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +21,12 @@ public class MarketRest {
     MarketService mService;
 	
     @RequestMapping(method=RequestMethod.PUT,value="/user/{id}/buy")
-    public ResponseEntity<?> buyCard(@PathVariable String id,@Valid @RequestBody UpdateUserDto userRequest) {
+    public ResponseEntity<?> buyCard(@PathVariable String id, @RequestBody UpdateUserDto userRequest) {
 		return mService.buyCard(Integer.valueOf(id), userRequest);
         
     }
     @RequestMapping(method=RequestMethod.PUT,value="/user/{id}/sell")
-    public  ResponseEntity<?> sellCard(@PathVariable String id,@Valid @RequestBody UpdateUserDto userRequest) {
+    public  ResponseEntity<?> sellCard(@PathVariable String id,@RequestBody UpdateUserDto userRequest) {
 		return mService.sellCard(Integer.valueOf(id), userRequest);
   	  
     }

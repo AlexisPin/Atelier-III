@@ -3,7 +3,6 @@ package com.sp.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,7 +29,7 @@ public class MarketService {
 	UserRepository uRepository;
 	
 	
-	public ResponseEntity<?> buyCard(Integer userId, @Valid UpdateUserDto userRequest) {
+	public ResponseEntity<?> buyCard(Integer userId, UpdateUserDto userRequest) {
 		User currentUser = uService.getUser(userId);
 		
 		if(currentUser == null) { 
@@ -79,7 +78,7 @@ public class MarketService {
 		return new ResponseEntity<>(new CustomSuccesType(currentUser.getAccount()).getAccount(), HttpStatus.OK);
 	}
 	
-	public ResponseEntity<?> sellCard(Integer userId, @Valid UpdateUserDto userRequest) {
+	public ResponseEntity<?> sellCard(Integer userId,UpdateUserDto userRequest) {
 		User currentUser = uService.getUser(userId);
 		
 		if(currentUser == null) { 
