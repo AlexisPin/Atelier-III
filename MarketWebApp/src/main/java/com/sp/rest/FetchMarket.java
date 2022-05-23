@@ -44,7 +44,6 @@ public class FetchMarket {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
 
-		String requestJson = "{\"account\":\"\"}";
 		// Data attached to the request.
 		HttpEntity<?> requestBody = new HttpEntity<>(user, headers);
 		
