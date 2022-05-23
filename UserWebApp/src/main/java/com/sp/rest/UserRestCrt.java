@@ -3,7 +3,6 @@ package com.sp.rest;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,7 +37,7 @@ public class UserRestCrt {
     }
     
     @RequestMapping(method=RequestMethod.PUT,value="/user/{id}")
-    public User updateUser(@PathVariable String id,@Valid @RequestBody User u) {
+    public User updateUser(@PathVariable String id,@RequestBody User u) {
 		User user = uService.updateUser(Integer.valueOf(id), u);
 		return user;
     }
