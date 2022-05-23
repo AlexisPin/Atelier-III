@@ -17,7 +17,7 @@ form.addEventListener("submit", function (event) {
     body: JSON.stringify(user),
   };
 
-  fetch("http://localhost:8081/login", context)
+  fetch("http://localhost:8080/login", context)
     .then((response) => response.json())
     .then((data) => login(data))
     .catch((error) => console.log(error));

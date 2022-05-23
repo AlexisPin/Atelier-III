@@ -1,7 +1,7 @@
 const user = {};
 const id = window.localStorage.getItem("id");
 window.addEventListener("load", function () {
-  fetch(`http://127.0.0.1:8081/user/${id}`)
+  fetch(`http://127.0.0.1:8080/userid/${id}`)
     .then((response) => response.json())
     .then((data) => getData(data));
 });
@@ -44,6 +44,6 @@ const cards = document.querySelectorAll(".card");
 
 cards.forEach((card) => {
   card.addEventListener("click", function () {
-    window.location.replace(`http://127.0.0.1:5500/pages/${card.id}.html`);
+    window.location.replace(`/pages/${card.id}.html`);
   });
 });

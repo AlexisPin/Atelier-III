@@ -25,7 +25,7 @@ form.addEventListener("submit", function (event) {
   if (password.value !== confirmPassword.value) {
     alert("Passwords do not match!");
   } else {
-    fetch("http://127.0.0.1:8081/user", context)
+    fetch("http://127.0.0.1:8080/user", context)
       .then(() => goToLogin())
       .catch((error) => console.log(error));
   }

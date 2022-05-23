@@ -10,18 +10,17 @@ const fetchUserInfos = () => {
       "Content-Type": "application/json",
     },
   };
-  fetch(`http://127.0.0.1:8081/user/${userId}`, context)
+  fetch(`http://127.0.0.1:8080/userid/${userId}`, context)
     .then((response) => response.json())
     .then((data) => {
-      fetchCardList(...data.cardList), (userAccount = data.account);
+      fetchCardList(data.cardList), (userAccount = data.account);
     })
-    .then(() => )
     .catch((error) => console.log(error));
 };
 
 fetchUserInfos();
 
-const fetchCardList =  (CardsId) => {
+const fetchCardList = (CardsId) => {
   userCardsId.push(...CardsId);
   const context = {
     method: "GET",
@@ -30,7 +29,7 @@ const fetchCardList =  (CardsId) => {
     },
   };
   CardsId.forEach((id) => {
-    fetch(`http://127.0.0.1:8081/card/${id}`, context)
+    fetch(`http://127.0.0.1:8080/card/${id}`, context)
       .then((response) => response.json())
       .then((data) => userCardsData.push(data))
       .then(() => isLoaded())
@@ -84,7 +83,7 @@ const sellCard = (id) => {
     }),
   };
 
-  fetch(`http://127.0.0.1:8081/user/${userId}/sell`, context)
+  fetch(`http://127.0.0.1:8080/sell/user/${userId}/sell`, context)
     .then((response) => response.json())
     .then((data) => updateMoney(data, id))
     .catch((error) => console.log(error));

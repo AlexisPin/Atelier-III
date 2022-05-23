@@ -7,7 +7,7 @@ const fetchCardsList = () => {
       "Content-Type": "application/json",
     },
   };
-  fetch(`http://localhost:8081/cards`, context)
+  fetch(`http://localhost:8080/cards`, context)
     .then((response) => response.json())
     .then((data) => {
       displayCards(data), addEvent();
@@ -52,7 +52,7 @@ const buyCard = (id) => {
     }),
   };
 
-  fetch(`http://localhost:8081/user/${userId}/buy`, context)
+  fetch(`http://localhost:8080/buy/user/${userId}/buy`, context)
     .then((response) => response.json())
     .then((data) => updateMoney(data, id))
     .catch((error) => console.log(error));
