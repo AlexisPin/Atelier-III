@@ -19,43 +19,33 @@ services:
 
   # Static service
   static-service:
-    image: staticservice
+    image: alexispin/staticservice:latest
     container_name: static_service
-    build:
-      context: ./StaticWebApp
     restart: on-failure
 
   # Card service
   card-service:
-    image: cardservice
+    image: alexispin/cardservice:latest
     container_name: card_service
-    build:
-      context: ./CardWebApp
     restart: on-failure
 
   # User service
   user-service:
-    image: userservice
+    image: alexispin/userservice:latest
     container_name: user_service
     depends_on:
       - card-service
-    build:
-      context: ./UserWebApp
     restart: on-failure
 
   market-service:
-    image: marketservice
+    image: alexispin/marketservice:latest
     container_name: market_service
     depends_on:
       - card-service
       - user-service
-    build:
-      context: ./MarketWebApp
     restart: on-failure
 
   auth-service:
-    image: loginservice
+    image: alexispin/loginservice:latest
     container_name: login_service
-    build:
-      context: ./LoginWebApp
     restart: on-failure
