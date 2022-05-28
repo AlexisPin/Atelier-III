@@ -1,7 +1,7 @@
 const user = {};
 const id = window.localStorage.getItem("id");
 window.addEventListener("load", function () {
-  fetch(`http://127.0.0.1:8080/user/${id}`)
+  fetch(`http://127.0.0.1:8080/userId/${id}`)
     .then((response) => response.json())
     .then((data) => getData(data));
 });

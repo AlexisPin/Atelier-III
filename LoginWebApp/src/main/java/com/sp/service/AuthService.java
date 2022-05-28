@@ -17,15 +17,12 @@ public class AuthService {
 	FetchAuth fetch = new FetchAuth();
 	
 	public ResponseEntity<?> authUser(AuthUserDto u) {
-		UserDto[] users = fetch.getUsers();
-		for(UserDto user : users) {
-			System.out.println(user.getLogin());
-			if(u.getLogin().equals(user.getLogin()) && u.getPwd().equals(user.getPwd()) ) {
+		UserDto user = fetch.getUser(u.getLogin());
 
-				return new ResponseEntity<UserDto>(user,
-		                HttpStatus.OK);
-			}
-		 }
+		if(u.getLogin().equals(user.getLogin()) && u.getPwd().equals(user.getPwd()) ) {
+			return new ResponseEntity<UserDto>(user,
+	                HttpStatus.OK);
+		}
 		return new ResponseEntity<CustomErrorType>(new CustomErrorType("Wrong credentials"),
                 HttpStatus.NOT_FOUND);
 	}

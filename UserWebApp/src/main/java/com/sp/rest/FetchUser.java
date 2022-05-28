@@ -11,8 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 public class FetchUser {
 
-	static final String URL_UpdateCard = "http://localhost:8082/card";
-	static final String URL_CARDSID = "http://localhost:8082/cardsId";
+	static final String URL_UpdateCard = "http://card-service:8082/card";
+	static final String URL_CARDSID = "http://card-service:8082/cardsId";
 	
 	RestTemplate restTemplate;
 

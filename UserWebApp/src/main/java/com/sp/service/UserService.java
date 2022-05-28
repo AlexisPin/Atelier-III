@@ -70,6 +70,15 @@ public class UserService {
 			return null;
 		}
 	}
+
+	public User getUserByLogin(String login) {
+		Optional<User> uOpt = uRepository.findByLogin(login);
+		if (uOpt.isPresent()) {
+			return uOpt.get();
+		}else {
+			return null;
+		}
+	}
 	
 
 }

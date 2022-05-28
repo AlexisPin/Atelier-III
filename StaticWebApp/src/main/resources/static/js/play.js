@@ -9,7 +9,7 @@ const fetchUserInfos = () => {
       "Content-Type": "application/json",
     },
   };
-  fetch(`http://127.0.0.1:8080/user/${userId}`, context)
+  fetch(`http://127.0.0.1:8080/userId/${userId}`, context)
     .then((response) => response.json())
     .then((data) => userInfos.push(data))
     .then(() => {

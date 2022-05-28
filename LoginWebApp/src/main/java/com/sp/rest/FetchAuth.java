@@ -7,20 +7,20 @@ import com.sp.model.UserDto;
 
 public class FetchAuth {
 
-	static final String URL_Users = "http://localhost:8087/users";
+	static final String URL_User = "http://user-service:8087/auth/";
 	RestTemplate restTemplate;
 
     public FetchAuth() {
 		this.restTemplate = new RestTemplate();
     }
     
-	public UserDto[] getUsers() {
+	public UserDto getUser(String login) {
 
 		// Send request with GET method and default Headers.
-		ResponseEntity<UserDto[]> result = restTemplate.getForEntity(URL_Users, UserDto[].class);
+		ResponseEntity<UserDto> result = restTemplate.getForEntity(URL_User + login, UserDto.class);
 		
-		UserDto[] users = result.getBody();
-		return users;
+		UserDto user = result.getBody();
+		return user;
 	}
 
 }

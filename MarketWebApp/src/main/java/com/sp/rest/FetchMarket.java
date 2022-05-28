@@ -11,10 +11,10 @@ import com.sp.model.UserDto;
 
 public class FetchMarket {
 
-	static final String URL_UserID = "http://localhost:8087/user";
-	static final String URL_CardID = "http://localhost:8082/card";
-	static final String URL_UpdateUser = "http://localhost:8087/user";
-	static final String URL_UpdateCard = "http://localhost:8082/card";
+	static final String URL_UserID = "http://user-service:8087/user";
+	static final String URL_CardID = "http://card-service:8082/card";
+	static final String URL_UpdateUser = "http://user-service:8087/user";
+	static final String URL_UpdateCard = "http://card-service:8082/card";
 	RestTemplate restTemplate;
 
     public FetchMarket() {

@@ -26,8 +26,14 @@ public class UserRestCrt {
 
     
     @RequestMapping(method=RequestMethod.POST,value="/user")
-    public void addUser(@RequestBody User card) {
-        uService.addUser(card);
+    public void addUser(@RequestBody User newUser) {
+    	Iterable<User> users = uService.getUsers();
+    	for(User user : users) {
+    		if(newUser.getLogin().equals(user.getLogin())) {
+    			return;
+    		}
+    	}
+        uService.addUser(newUser);
     }
     
     @RequestMapping(method=RequestMethod.GET,value="/user/{id}")
@@ -48,4 +54,9 @@ public class UserRestCrt {
         return users;
     }
     
+    @RequestMapping(method=RequestMethod.GET,value="/auth/{login}")
+    public User getUserByLogin(@PathVariable String login) {
+        User user=uService.getUserByLogin(login);
+        return user;
+    }
 }

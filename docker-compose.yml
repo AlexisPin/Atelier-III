@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+
+  # Proxies requests to internal services
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse_proxy
+    depends_on:
+      - static-service
+      - card-service
+      - user-service
+      - auth-service
+      - market-service
+    volumes:
+      - ./Proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 8080:80
+
+  # Static service
+  static-service:
+    image: staticservice
+    container_name: static_service
+    build:
+      context: ./StaticWebApp
+    restart: on-failure
+
+  # Card service
+  card-service:
+    image: cardservice
+    container_name: card_service
+    build:
+      context: ./CardWebApp
+    restart: on-failure
+
+  # User service
+  user-service:
+    image: userservice
+    container_name: user_service
+    depends_on:
+      - card-service
+    build:
+      context: ./UserWebApp
+    restart: on-failure
+
+  market-service:
+    image: marketservice
+    container_name: market_service
+    depends_on:
+      - card-service
+      - user-service
+    build:
+      context: ./MarketWebApp
+    restart: on-failure
+
+  auth-service:
+    image: loginservice
+    container_name: login_service
+    build:
+      context: ./LoginWebApp
+    restart: on-failure
