@@ -17,7 +17,7 @@ import com.sp.model.User;
 import com.sp.service.UserService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class UserRestCrt {
     @Autowired

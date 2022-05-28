@@ -15,10 +15,13 @@ import com.sp.rest.FetchMarket;
 import com.sp.util.CustomErrorType;
 import com.sp.util.CustomSuccesType;
 
+
 @Service
 public class MarketService {
 
 	FetchMarket fetch = new FetchMarket();
+	
+	
 	
 	public ResponseEntity<?> buyCard(Integer userId,UpdateUserDto userRequest) {
 		UserDto currentUser = fetch.getUser(userId);
@@ -32,7 +35,7 @@ public class MarketService {
 		int cardId = userRequest.getCard();
 		CardDto currentCard = fetch.getCard(cardId);
 		
-		if(currentCard.equals(null)) {
+		if(currentCard == null) {
 			return new ResponseEntity<>(new CustomErrorType("Unable to upate. Card with id " + userRequest.getCard() + " not found."),
                     HttpStatus.NOT_FOUND);
 		}
@@ -45,7 +48,7 @@ public class MarketService {
 						if(currentCard.getIdUser() == null)
 						{					
 							currentUser.setAccount(userAccount - cardPrice);
-							List<Integer> newCardList = new ArrayList<Integer>();
+							List<Integer> newCardList = new ArrayList<>();
 							newCardList.addAll(userCardList);
 							newCardList.add(cardId);
 							currentUser.setCardList(newCardList);
@@ -81,7 +84,7 @@ public class MarketService {
 		int cardId = userRequest.getCard();
 		CardDto currentCard = fetch.getCard(cardId);
 		
-		if(currentCard.equals(null)) {
+		if(currentCard == null) {
 			return new ResponseEntity<>(new CustomErrorType("Unable to upate. Card with id " + userRequest.getCard() + " not found."),
                     HttpStatus.NOT_FOUND);
 		} else {
@@ -89,7 +92,7 @@ public class MarketService {
 			if(userCardList.contains(cardId)) {
 				int cardPrice = currentCard.getPrice();
 				currentUser.setAccount(userAccount + cardPrice);
-				List<Integer> newCardList = new ArrayList<Integer>();
+				List<Integer> newCardList = new ArrayList<>();
 				newCardList.addAll(userCardList);
 				int sellCard = newCardList.indexOf(cardId);
 				newCardList.remove(sellCard);

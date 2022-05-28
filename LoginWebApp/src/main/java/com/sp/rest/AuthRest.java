@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.sp.model.AuthUserDto;
 import com.sp.service.AuthService;
 
-  @CrossOrigin
+  @CrossOrigin(origins = "http://localhost:8080")
   @RestController
   public class AuthRest {
 	  

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sp.model.Card;
 import com.sp.service.CardService;
 
-  @CrossOrigin
+  @CrossOrigin(origins = "http://localhost:8080")
   @RestController
   public class CardRestCrt {
       

@@ -14,7 +14,7 @@ import com.sp.model.UpdateUserDto;
 import com.sp.service.MarketService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 public class MarketRest {
     @Autowired

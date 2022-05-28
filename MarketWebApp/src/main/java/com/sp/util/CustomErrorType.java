@@ -1,6 +1,6 @@
 package com.sp.util;
 
-public class CustomErrorType {
+public class CustomErrorType implements CustomType{
 	 
     private String errorMessage;
  
