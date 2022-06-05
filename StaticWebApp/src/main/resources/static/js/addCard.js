@@ -24,7 +24,7 @@ function fetchData(card) {
       "Content-Type": "application/json",
     },
   };
-  fetch("http://127.0.0.1:8080/newCard", context).then(() => clearForm());
+  fetch("http://localhost:8080/card", context).then(() => clearForm());
 }
 
 const clearForm = () => {
